@@ -1,3 +1,26 @@
+<?php
+
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+
+    include 'backend.php';
+    $name = $_POST["name"];
+    $dob = $_POST["dob"];
+    $phone = $_POST["phone"];
+    $address = $_POST["address"];
+    $state = $_POST["state"];
+    $email = $_POST["email"];
+    $etype = $_POST["etype"];
+    $gender = $_POST["gender"];
+    $comment = $_POST["comment"];
+
+
+    $sql="INSERT INTO `contactme` (`name`, `dob`, `phone`, `address`, `state`, `email`, `etype`, `gender`, `comment`) VALUES ( '$name', '$dob', '$phone', '$address', '$state', '$email', '$etype', '$gender', '$comment')";
+    $result=mysqli_query($conn, $sql);
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -227,28 +250,28 @@
     <header>
         <div class="contact_box">
             <h2>Fill this form to contact Mann</h2>
-            <form action="backend.php">
+            <form action="contact.php" method="post">
                 <br>
                 <div class="d">
                     <label for="Names">Name: </label>
-                    <input type="text" name="MyName" id="Names">
+                    <input type="text" name="name" id="Names">
                 </div>
                 <br>
                 <div class="d">
-                    Date of Birth : <input type="date" name="Mydateobirth">
+                    Date of Birth : <input type="date" name="dob">
                 </div>
                 <br>
                 <div class="d">
-                    Phone Number : <input type="number" name="MyPhone">
+                    Phone Number : <input type="number" name="phone">
                 </div>
                 <br>
                 <div class="d">
-                    Address : <textarea name="MyAddress" rows="4" cols="30"></textarea>
+                    Address : <textarea name="address" rows="4" cols="30"></textarea>
                 </div>
                 <br>
                 <div class="d">
                     <label for="state">Select State :</label>
-                    <select name="MyStates" id="state">
+                    <select name="state" id="state">
                         <option value="sel" selected>select</option>
                         <option value="Guj">GUJARAT</option>
                         <option value="Mh">Maharashtra</option>
@@ -258,22 +281,22 @@
                 </div>
                 <br>
                 <div class="d">
-                    Email : <input type="email" name="MyEmail">
+                    Email : <input type="email" name="email">
                 </div>
                 <br>
                 <div class="d">
-                    email type: Personal <input type="checkbox" name="Mycheckbox"> Professional <input type="checkbox"
+                    email type: Personal <input type="checkbox" name="etype"> Professional <input type="checkbox"
                         name="Mycheckbox">
                 </div>
                 <br>
                 <div class="d">
-                    Gender : Male <input type="radio" name="MyGender"> Female <input type="radio" name="MyGender">
+                    Gender : Male <input type="radio" name="gender"> Female <input type="radio" name="gender">
                     Others
-                    <input type="radio" name="MyGender">
+                    <input type="radio" name="gender">
                 </div>
                 <br>
                 <div class="d">
-                    Suggestions (if any): <input type="text" name="MySuggestions">
+                    Suggestions (if any): <input type="text" name="comment">
                 </div>
                 <br>
                 <div>
